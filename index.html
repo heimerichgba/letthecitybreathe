@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Let The City Breathe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+</head>
+<body>
+
+    <nav id="main-nav">
+        <ul>
+            <li onclick="showSection('map-section')">Map</li>
+            <li onclick="showSection('novel')">Graphic Novel</li>
+            <li onclick="showSection('context')">Context</li>
+            <li onclick="showSection('events')">Events</li>
+            <li onclick="showSection('about')">About</li>
+        </ul>
+    </nav>
+
+    <div id="void-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+        <h3>Add a Void</h3>
+        <input type="text" id="void-title" placeholder="Title" maxlength="50">
+        <textarea id="void-desc" placeholder="Description (Max 100 words)..." rows="4"></textarea>
+        <div class="modal-buttons">
+            <button onclick="closeModal()">Cancel</button>
+            <button onclick="submitVoid()" class="save-btn">Save Void</button>
+        </div>
+    </div>
+    </div>
+
+    <main>
+        
+        <section id="map-section" class="active-section">
+            <div id="map"></div>
+            <button id="list-toggle-btn">☰</button>
+            <div id="void-list-panel">
+                <h3>All Voids</h3>
+                <ul id="void-list-content">
+                    </ul>
+            </div>
+            <button id="add-marker-btn">Mark a Void</button>
+        </section>
+
+        <section id="novel">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide dark-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (1).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (2).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (3).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (4).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (5).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (6).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (7).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (8).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (9).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (10).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (11).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (12).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (13).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (14).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (15).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (16).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (17).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (18).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (19).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (20).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (21).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (22).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (23).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (24).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (25).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (26).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (27).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (28).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (29).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (30).jpg"></div>
+                    <div class="swiper-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (31).jpg"></div>
+                    <div class="swiper-slide dark-slide"><img src="OUTDOORSPACE_GRAPHICNOVEL (32).jpg"></div>
+                    </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section> 
+
+        <section id="context">
+            <div class="content-wrapper" style="padding: 40px; max-width: 800px; margin: 0 auto;">
+                <h1>LET THE CITY BREATHE !</h1>
+                <div class="text-columns">
+                    <p>The contemporary city is often reduced to a functional machine, a complex assemblage of economic and political logics where space is organized solely for efficiency and capital accumulation. Yet, within this rigid framework, the Hardturm Parkhaus in Zurich stands as a living ruin that defies standard categorization. It represents a pause in the urban fabric, a void that is neither empty nor neutral but dense with invisible relations, rhythms, and memories. Our project, Let the City Breathe, utilizes the medium of the graphic novel to document these underdetermined spaces, revealing that what official planning disregards as obsolete is actually a vital reservoir of urban resilience.</p>
+                    <p>Modern planning tends to flatten the complexity of the territory through zoning maps and ownership boundaries, turning informal uses invisible simply because they do not generate profit. This legibility is not innocent, since it privileges what can be measured while erasing the lived reality of the city. We challenge this erasure through our chosen medium. Unlike conventional architectural tools that freeze space, the graphic novel captures the fourth dimension of architecture: the unfolding of time, the impact of weather, and the unpredictability of human use. It allows us to document the gestures, improvisations, and social encounters that otherwise escape the static nature of standard representation.</p>
+                    <p>In this context, legitimacy does not announce itself loudly through deeds or signatures that circulate far above the ground. Instead, it emerges quietly through use and the stubborn fact of being there. Private property promises order but often produces distance, privileging those who invest over those who inhabit. The Parkhaus, a concrete ‘non-place’ filled with memories and traces that seem to escape control, challenges this logic. Here, marginalized groups find shelter and autonomy, creating a microterritory defined by care rather than contract, where rules loosen and new ways of living appear.</p>
+                    <p>We argue that true resilience depends on what remains undecided. The capacity of the city to absorb shocks and transformations relies on these ‘margins of operation’, where adjustments occur without immediate conflict or displacement. In this context, architectural design necessitates a transition from merely creating objects to serving as a mediator of relationships and temporal dynamics. The empty space is not nothing; it is an active refusal of the imperative to optimize. Looking after these spaces becomes a radical political act of attention, for it is by maintaining these voids that we allow the city to breathe.</p>
+                </div>
+
+                <h1>Architectural References</h1>
+
+                <div class="swiper reference-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (1).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (2).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (3).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (4).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (5).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (6).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (7).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (8).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (9).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (10).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (11).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (12).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (13).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (14).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (15).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (16).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (17).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (18).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (19).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (20).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (21).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (22).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (23).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (24).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (25).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (26).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (27).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (28).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (29).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (30).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_REFERENCEBOOKLET (31).jpg"></div>
+                    </div>
+                    
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div class="swiper-pagination reference-pagination"></div>
+
+                <h1>Theoretical References</h1>
+
+                <div class="swiper reference-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (1).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (2).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (3).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (4).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (5).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (6).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (7).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (8).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (9).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (10).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (11).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (12).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (13).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (14).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (15).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (16).jpg"></div>
+                        <div class="swiper-slide"><img src="OUTDOORSPACE_TEXTBOOKLET (17).jpg"></div>
+                    </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div class="swiper-pagination reference-pagination"></div>
+            </div>
+        </section>
+
+        <section id="events">
+            <div class="content-wrapper">
+                <h1>Events</h1>
+
+                <img src="poster.jpg" class="full-width-img" alt="Event Poster">
+
+                <img src="photo1.jpg" class="full-width-img" alt="Event Photo">
+                <img src="text1.jpg" class="full-width-img" alt="Event Photo">
+                <img src="photo2.jpg" class="full-width-img" alt="Event Photo">
+                <img src="text2.jpg" class="full-width-img" alt="Event Photo">
+                <img src="photo3.jpg" class="full-width-img" alt="Event Photo">
+                <img src="text3.jpg" class="full-width-img" alt="Event Photo">
+                <img src="photo4.jpg" class="full-width-img" alt="Event Photo">
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="colophon-wrapper" style="padding: 40px; max-width: 800px; margin: 0 auto;">
+                <h1 class="colophon-title">LET THE CITY BREATHE !</h1>
+                <p class="colophon-subtitle" style="margin-bottom: 40px;">graphic novel & urban research project</p>
+                
+                <div class="colophon-institution">
+                    <p>ETH Zurich – Department of Architecture</p>
+                </div>
+
+                <div class="colophon-authors" style="margin-bottom: 40px;">
+                    <p class="copyright">© authors</p>
+                    <ul>
+                        <li>Alexandre Adnane</li>
+                        <li>Julianne Bachmann</li>
+                        <li>Laila Simone Boukar</li>
+                        <li>Heimerich Samuel Gba</li>
+                        <li>Eleah Liliana Gollin</li>
+                    </ul>
+                </div>
+
+                <div class="colophon-contact">
+                    <a href="mailto:info@letthecitybreathe.ch">info@letthecitybreathe.ch</a>
+                    <br>
+                    <a href="https://letthecitybreathe.ch">letthecitybreathe.ch</a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBF1PT0l-t0jV9EtxtLFqiYDP12sP9QEcA",
+        authDomain: "zurich-voids.firebaseapp.com",
+        databaseURL: "https://zurich-voids-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "zurich-voids",
+        storageBucket: "zurich-voids.firebasestorage.app",
+        messagingSenderId: "924797349452",
+        appId: "1:924797349452:web:cf12fc74f7f3eaa6864ee9",
+        measurementId: "G-7YV724TC09"
+        };
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,526 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden; /* Prevents scrollbars for the app feel */
+}
+
+/* Navigation Styling */
+nav#main-nav {
+    height: 50px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav#main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav#main-nav li {
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+nav#main-nav li:hover {
+    text-decoration: underline;
+}
+
+/* The Container */
+main {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+}
+
+/* The Cards (All Sections) */
+main section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Important! */
+    z-index: 0; /* Sit at the bottom */
+}
+
+main section.active-section {
+    z-index: 999; /* Sit on top */
+}
+
+/* ADD this new block for the active state: */
+main section.active-section {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10; /* Bring it to the front */
+}
+
+/* Ensure main container has position relative */
+main {
+    position: relative;
+    height: calc(100vh - 50px);
+    width: 100vw;
+}
+
+/* Map specific */
+#map {
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Button to add markers */
+#add-marker-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Must be higher than map */
+    padding: 10px 20px;
+    background: white;
+    border: 2px solid black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Graphic Novel Images */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keeps entire image visible */
+}
+
+.swiper {
+    width: 100%;
+    height: 100%; /* Forces the slider to fill the section */
+}
+
+/* Ensure the arrows are visible and distinct */
+/* 1. Make the arrows black */
+.swiper-button-next, 
+.swiper-button-prev {
+    color: black !important; /* Forces the color change */
+    /* Optional: Make them smaller or thinner if you want */
+    /* transform: scale(0.8); */ 
+}
+
+/* 2. Make the dots at the bottom black */
+.swiper-pagination-bullet {
+    background: gray;      /* Inactive dots are gray */
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: black !important; /* Active dot is black */
+    opacity: 1;
+}
+
+.black-marker-icon {
+    background-color: black;
+    border-radius: 50%; /* Makes it a circle */
+    border: 2px solid white; /* White outline for contrast */
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    display: block;
+}
+
+/* --- 2. Cursor Mode --- */
+/* When this class is added to the map, cursor becomes a crosshair */
+.adding-mode {
+    cursor: crosshair !important;
+}
+
+/* --- 3. The Input Form (Modal) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Changed to white transparency for a cleaner look */
+    backdrop-filter: blur(2px); /* Optional: nice blur effect behind the popup */
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    width: 320px;
+    border: 2px solid black; /* Thick architectural border */
+    font-family: Arial, Helvetica, sans-serif; /* Ensures same font */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.1); /* Optional: Architectural "hard" shadow */
+}
+
+/* Typography Consistency */
+.modal-content h3 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.modal-content input, 
+.modal-content textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid black; /* Sharp black borders */
+    font-family: inherit;    /* Forces inputs to use the same font as the title */
+    background: #f9f9f9;
+}
+
+/* 1. Enable Scrolling for this specific page */
+#context {
+    overflow-y: auto; /* Allows vertical scrolling */
+    background: white;
+    padding-bottom: 50px; /* Extra space at the bottom */
+}
+
+/* 2. The Container */
+#context .content-wrapper {
+    /* Slightly wider to accommodate two columns comfortably */
+    max-width: 800px; 
+    margin: 40px auto; /* Center the whole block */
+    padding: 0 40px;   /* Safety padding on sides */
+}
+
+/* 3. The Title */
+#context h1 {
+    column-span: all;
+    text-align: left;
+    
+    /* --- NEW SPACING --- */
+    margin-top: 100px;    /* Adds big space ABOVE the title */
+    margin-bottom: 20px;  /* Keeps space BELOW the title */
+    
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Special Rule: Keep the very first title at the top */
+#context h1:first-child {
+    margin-top: 0;
+}
+
+/* 4. The Container (Holds the columns) */
+.text-columns {
+    column-count: 2;        /* The container splits into 2 */
+    column-gap: 50px;       /* Gap between columns */
+}
+    
+/* 5. The Paragraphs (Flow inside the columns) */
+.text-columns p {
+    margin-top: 0;          /* Remove top margin */
+    margin-bottom: 20px;    /* Space between paragraphs */
+
+    /* Typography settings */
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.5;       /* Good readability */
+    font-size: 14px;
+
+    break-inside: avoid;
+
+    /* CHANGED: turned off hyphens as requested */
+    -webkit-hyphens: none;
+    hyphens: none;
+}
+
+/* Mobile Tweak: Revert to 1 column on small screens */
+@media (max-width: 768px) {
+    #context p {
+        column-count: 1;
+    }
+}
+
+/* --- BUTTONS --- */
+.modal-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px;
+}
+
+/* 1. The Save Button (Solid Black) */
+.save-btn {
+    flex: 1; /* Takes up half the space */
+    background: black;
+    color: white;
+    border: 2px solid black;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.save-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* 2. The Cancel Button (Inversed: White with Black Frame) */
+.modal-buttons button:first-child { 
+    flex: 1;
+    background: white;
+    color: black;
+    border: 2px solid black;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.modal-buttons button:first-child:hover {
+    background: #eee; /* Light gray on hover */
+}
+
+/* --- BOTTOM LEFT LIST --- */
+#list-toggle-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    z-index: 1000;
+    background: white;
+    border: 2px solid black;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#void-list-panel {
+    position: absolute;
+    bottom: 80px; /* Sits above the button */
+    left: 20px;
+    z-index: 1000;
+    background: white;
+    border: 2px solid black;
+    width: 200px;
+    max-height: 300px; /* Scroll if too many voids */
+    overflow-y: auto;
+    display: none; /* Hidden by default */
+    padding: 10px;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+}
+
+#void-list-panel h3 {
+    margin-top: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+#void-list-content {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#void-list-content li {
+    padding: 8px 5px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+#void-list-content li:hover {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+/* --- POPUP BUTTONS (Edit/Delete) --- */
+.popup-btn-row {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+    font-size: 10px;
+    padding: 4px 8px;
+    cursor: pointer;
+    border: 1px solid black;
+    background: white;
+    text-transform: uppercase;
+}
+
+.delete-btn {
+    background: black;
+    color: white;
+}
+
+/* Special background for First and Last slides */
+.dark-slide {
+    background-color: rgb(53, 49, 50); /* <--- PASTE YOUR RGB NUMBERS HERE */
+}
+
+/* Ensure the image stays centered inside the dark box */
+.dark-slide img {
+    /* Optional: If your images are transparent PNGs, they will sit on the dark color.
+       If they are JPGs with white backgrounds, this color won't be visible unless the image is smaller than the screen. */
+    mix-blend-mode: normal; 
+}
+/* --- REFERENCE SLIDER (Context Section) --- */
+
+/* 1. Force the Slide to be a "Flex" container that centers everything */
+.reference-swiper .swiper-slide {
+    display: flex !important;
+    justify-content: center !important; /* Centers Horizontal */
+    align-items: center !important;     /* Centers Vertical */
+    height: 100%;
+    background-color: transparent;      /* Ensures no white boxes cover the grey */
+}
+
+/* Ensure images fit nicely inside the box */
+.reference-swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Shows whole image without cropping */
+}
+
+/* --- REFERENCE SLIDER (Context Section) --- */
+.reference-swiper {
+    width: 100%;       
+    height: 500px;     
+    margin-top: 60px;  
+    margin-bottom: 60px;
+    background-color: #ffffff; 
+    /* Fix for stacking issue: ensures the second slider is visible */
+    position: relative; 
+    display: block; 
+}
+
+/* 2. Force the image to fit INSIDE the box (No cutoff) */
+.reference-swiper .swiper-slide img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;  /* Stops it from stretching */
+    height: auto !important; /* Stops it from stretching */
+    object-fit: contain !important; /* Ensures the whole image is visible */
+    margin: auto;
+}
+
+/* 3. Make arrows visible */
+.reference-swiper .swiper-button-next,
+.reference-swiper .swiper-button-prev {
+    color: black !important;
+}
+
+/* --- Reference Pagination (Outside the box) --- */
+.reference-pagination {
+    position: relative !important; /* Stops it from floating over the image */
+    margin-top: 15px;             /* Adds space between image and dots */
+    margin-bottom: 40px;          /* Adds space below the dots */
+    text-align: center;           /* Centers the dots */
+    bottom: auto !important;      /* Resets default Swiper positioning */
+}
+
+/* --- CONTACT SECTION (The Colophon) --- */
+
+/* --- CONTACT SECTION (Mixed Layout) --- */
+
+/* 1. Base Layout (Identical to Context) */
+#about {
+    overflow-y: hidden;       /* Allows scrolling if needed */
+    background: white;
+    padding-bottom: 50px;
+    display: block;         /* Removes the flex centering */
+}
+
+/* 2. Reuse the Content Wrapper logic (for the 800px stripe) */
+#about .content-wrapper {
+    max-width: 800px;
+    margin: 40px auto;      /* Centers the 800px stripe horizontally */
+    padding: 0 40px;
+}
+
+/* 3. The Title (Matches Context Title Exactly) */
+#about h1 {
+    text-align: left;       /* Left Aligned */
+    margin-top: 0;      /* Starts lower down */
+    margin-bottom: 40px;    /* Space before the credits start */
+    
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 4. The Colophon Content (Centered Aesthetic) */
+.colophon-group {
+    text-align: center;     /* Centers the text lines */
+    max-width: 600px;       /* Keeps text nice and narrow */
+    margin: 0 auto;         /* Centers the block inside the 800px stripe */
+}
+
+/* Styling for the credits */
+.colophon-subtitle {
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+.colophon-institution {
+    margin-bottom: 40px;
+}
+
+.colophon-authors ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 60px 0;
+    line-height: 1.6;
+}
+
+.colophon-contact a {
+    color: black;
+    text-decoration: none;
+    font-style: italic;
+    display: block;
+}
+
+.colophon-contact a:hover {
+    text-decoration: underline;
+}
+
+/* --- EVENTS SECTION --- */
+
+#events {
+    overflow-y: scroll; /* Allows scrolling & keeps layout stable */
+    background: white;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 50px; /* Space at bottom for scrolling */
+}
+
+/* Re-use the existing wrapper logic to get the 800px stripe */
+#events .content-wrapper {
+    max-width: 800px;
+    margin: 40px auto; /* Centers the stripe horizontally */
+    padding: 0 40px;   /* Safety padding on mobile */
+}
+
+#events h1 {
+    text-transform: uppercase;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    font-size: 32px;
+    letter-spacing: 0.5px;
+}
+
+/* This forces the images to fill the 800px width */
+.full-width-img {
+    width: 100%;       
+    height: auto;      /* Maintains aspect ratio */
+    display: block;    /* Removes tiny gap below images */
+    margin-bottom: 40px; /* Architectural spacing between images */
+}
